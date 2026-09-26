@@ -185,6 +185,22 @@
     });
   });
 
+  /* ---------- 5. Back-to-top button ---------- */
+  const backToTop = document.getElementById("back-to-top");
+
+  if (backToTop) {
+    function updateBackToTopVisibility() {
+      backToTop.classList.toggle("is-visible", window.scrollY > 400);
+    }
+
+    window.addEventListener("scroll", updateBackToTopVisibility, { passive: true });
+    updateBackToTopVisibility(); // in case the page loads already scrolled
+
+    backToTop.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
   /* ---------- Footer year ---------- */
   document.getElementById("year").textContent = new Date().getFullYear();
 })();
